@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8" />
+
+	<!-- CONSOLE [just for development, when you want to deploying this project please remove this link & script]-->
+	<link rel="stylesheet" href="../static/assets/console.css" type="text/css" media="all" />
+	<script src="../static/assets/console.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- Libraries -->
+	<link rel="stylesheet" href="../static/assets/bootstrap5.min.css" type="text/css" media="all" />
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+											<script src="../static/assets/materialize.js"></script>
+											<link rel="stylesheet" href="../static/assets/materialize.css">-->
+	<link rel="stylesheet" href="../static/assets/fontawesome.css">
+
+	<link rel="stylesheet" href="../static/css/index.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="../static/css/new-post.css" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="../static/assets/profile.jpg" type="image/x-icon" />
+	<title>IKA313</title>
+</head>
+<body>
+	<!-- HEADER -->
+	<nav class="navbar fixed-top bg-danger text-white" id="toolbar">
+		<div class="head">
+			IKA313-Admin
+		</div>
+	</nav>
+
+	<div class="card">
+		<div class="card-header">
+			post details
+		</div>
+		<div class="card-body">
+			<form action="/user/newpost" method="post" enctype="multipart/form-data">
+				<input type="file" name="file">
+				<input type="text" class="form-control" name="title" placeholder="title" /><br />
+				<textarea class="form-control" rows="8" cols="35" name="content" placeholder="content"></textarea><br />
+				<input type="text" class="form-control" name="keywords" placeholder="keywords" /><br />
+
+				<button class="btn btn-block btn-outline-primary" type="submit" onclick="savePost();">submit</button>
+			</form>
+		</div>
+	</div>
+
+	<script src="../static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		function toast(text, time) {
+			document.getElementById("BoxToastBox").innerHTML = `<div id='toastBox'>${text}</div>`;
+			var x = document.getElementById("toastBox");
+			x.className = "show";
+			setTimeout(function () {
+				x.className = x.className.replace("show", "");
+			}, time);
+		}
+	</script>
+
+	{% with messages = get_flashed_messages()  %}
+	{% if messages %}
+	{% for message in messages %}
+	<script>
+		toast("{{ message }}", 2000);
+	</script>
+	{% endfor %}
+	{% endif %}
+	{% endwith  %}
+</body>
+</html>

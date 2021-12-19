@@ -1,0 +1,24 @@
+body {
+	background: #eeeeee;
+}
+textarea {
+	resize: none;
+}
+.card {
+	margin: auto;
+	width: fit-content;
+	height: fit-content;
+	left:0;top:0;right:0;bottom:0;
+	position: absolute;
+	box-shadow: 0 0 8px #e0e0e0aa;
+}
+textarea::-webkit-scrollbar {
+	width: 10px;
+	background: transparent;
+}
+textarea::-webkit-scrollbar-thumb {
+	width: 10px;
+	height: 10px;
+	border-radius: 50px;
+	background: #C9C9C9aa;
+}

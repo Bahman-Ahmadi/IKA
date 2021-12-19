@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8" />
+
+	<!-- CONSOLE [just for development, when you want to deploying this project please remove this link & script]-->
+	<link rel="stylesheet" href="../static/assets/console.css" type="text/css" media="all" />
+	<script src="../static/assets/console.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- Libraries -->
+	<link rel="stylesheet" href="../static/assets/bootstrap5.min.css" type="text/css" media="all" />
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script src="../static/assets/materialize.js"></script>
+		<link rel="stylesheet" href="../static/assets/materialize.css">-->
+
+	<link rel="stylesheet" href="../static/css/index.css" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="../static/assets/profile.jpg" type="image/x-icon" />
+	<title>IKA313</title>
+</head>
+<body>
+	<!-- HEADER -->
+	<nav class="navbar fixed-top bg-danger text-white" id="toolbar">
+		<div class="head">
+			IKA313
+		</div>
+	</nav>
+
+	<!-- CONTENT -->
+	<div class="container">
+		{% if login %}
+		<form action="/loggedin" method="post">
+			<input type="text" name="id" id="id" placeholder="id" class="form-control" /><br>
+			<input type="password" name="password" id="password" placeholder="password" class="form-control" /><br>
+			<button type="submit" class="btn btn-success">login</button>
+		</form>
+		{% else %}
+		<form action="/signedup" method="post">
+			<input type="text" name="name" id="name" placeholder="what's your name?" class="form-control" required /><br>
+			<input type="password" name="password" id="password" placeholder="enter a password:" class="form-control" required /><br>
+			<input type="text" name="id" id="id" placeholder="what id do you like?" class="form-control" required /><br>
+			<input type="number" name="phone" id="phone" placeholder="what's your phone number?" class="form-control" required /><br>
+			<input type="email" name="email" id="email" placeholder="write your email address:" class="form-control" required /><br>
+			<input type="date" name="birthdate" id="birthdate" class="form-control" required /><br>
+			<button type="submit" class="btn btn-success">signup</button>
+		</form>
+		<script>
+			let date = new Date();
+			let element = document.getElementById("birthdate");
+			element.min = `${date.getFullYear()-118}-01-01`;
+			element.max = `${date.getFullYear()-18}-12-31`;
+			element.value = `${date.getFullYear()-18}-12-31`;
+		</script>
+		{% endif %}
+	</div>
+
+</body>
+</html>

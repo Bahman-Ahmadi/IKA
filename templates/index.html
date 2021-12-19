@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8" />
+
+	<!-- CONSOLE [just for development, when you want to deploying this project please remove this link & script]-->
+	<link rel="stylesheet" href="../static/assets/console.css" type="text/css" media="all" />
+	<script src="../static/assets/console.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- Libraries -->
+	<link rel="stylesheet" href="../static/assets/bootstrap5.min.css" type="text/css" media="all" />
+	<script src="../static/assets/materialize.js"></script>
+	<link rel="stylesheet" href="../static/assets/materialize.css">
+
+	<link rel="stylesheet" href="../static/css/index.css" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="../static/assets/profile.jpg" type="image/x-icon" />
+	<title>IKA313</title>
+</head>
+<body>
+	<!-- HEADER -->
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper white">
+				<a href="#" class="brand-logo"><span class="red-text">IKA³¹³</span></a>
+				<a href="#" data-target="openMenu" class="sidenav-trigger"><i class="black-text material-icons">menu</i></a>
+			</div>
+		</nav>
+	</div>
+
+	<ul id="openMenu" class="sidenav">
+		<li><div class="user-view">
+			<div class="background">
+				<img src="../static/assets/bg.png" width="300" height="300">
+			</div>
+			<a href="#user"><img class="circle" src="../static/assets/profile.jpg"></a>
+			<a href="#name"><span class="white-text name">IKA</span></a>
+			<a href="#email"><span class="white-text">iran killuminati Association</span></a>
+		</div>
+		</li>
+		<li><a href="/login" class="waves-effect"><i class="material-icons">dashboard</i>user dashboard</a></li>
+		<li><a href="/chat" class="waves-effect"><i class="material-icons">chat</i>IKA group chatroom</a></li>
+		<li><a href="/admin" class="waves-effect"><i class="material-icons">person</i>login to admin panel</a></li>
+	</ul>
+
+
+	<!-- CONTENT -->
+	<div class="container blog" style="margin-top: 20px;">
+		{% for article in articles %}
+		{% if article.released %}
+		<div class="alert alert-dark article">
+			<img class="thumbnail" src="../static/{{article.thumbnail}}" alt="[T]" />
+			<br />
+			<br />
+			<h5 class="title">{{article.title}}</h5>
+			<p class="preview">
+				{{article.preview}}
+			</p>
+			<br />
+			<span class="author">✍️ {{article.author}}</span>
+			<span class="likes">❤️ {{article.likes}} like(s)</span>
+			<span class="comments">💬 {{commentsLengths[articles.index(article)]}} comment(s)</span>
+			<br />
+			<button class="btn waves-effect waves-light red open-post" onclick="goto('/p/{{article.slug}}');">show post</button>
+			{% endif %}
+		</div>
+
+		{% endfor %}
+	</div>
+
+	<script src="../static/js/index.js"></script>
+
+</body>
+</html>

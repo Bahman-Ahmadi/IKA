@@ -1,0 +1,57 @@
+[
+    {
+        "avatar": "assets/profile.jpg",
+        "name": "Bahman",
+        "password": "00475c6f6d939ecbc6aaa1b650236366c4f5aa79e958b5c151196ba6187c153d",
+        "ID": "Bprogrammer",
+        "phone": "09022680993",
+        "email": "bahmanahmadi.mail@gmail.com",
+        "birthdate": "2007-01-08",
+        "joindate": "2021-09-28 16:32",
+        "permissions": {
+            "post": true,
+            "chat": true
+        },
+        "followers": [
+            "admin"
+        ],
+        "followings": [
+            "admin"
+        ],
+        "isbanned": false
+    },
+    {
+        "name": "new member",
+        "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+        "ID": "newmember",
+        "phone": "09126456789",
+        "email": "new@ika.ir",
+        "birthdate": "2003-12-31",
+        "joindate": "2021-11-03 16:33",
+        "permissions": {
+            "post": true,
+            "chat": true
+        },
+        "isbanned": false,
+        "avatar": "assets/profile.jpg",
+        "followings": [],
+        "followers": []
+    },
+    {
+        "name": "newuser",
+        "password": "9c9064c59f1ffa2e174ee754d2979be80dd30db552ec03e7e327e9b1a4bd594e",
+        "ID": "newuser",
+        "phone": "09123456789",
+        "email": "newuser@ika.ir",
+        "birthdate": "2003-12-25",
+        "joindate": "2021-11-05 12:39",
+        "permissions": {
+            "post": true,
+            "chat": true
+        },
+        "isbanned": true,
+        "avatar": "assets/profile.jpg",
+        "followings": [],
+        "followers": []
+    }
+]

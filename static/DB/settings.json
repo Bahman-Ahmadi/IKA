@@ -1,0 +1,20 @@
+{
+    "title": "IKA313",
+    "myMessagesColors": {
+        "back": "#ff00ff",
+        "front": "#00ffff"
+    },
+    "otherMessagesColors": {
+        "back": "#0000ff",
+        "front": "#00ff00"
+    },
+    "permissions": {
+        "viewMembers": true,
+        "viewAdmins": true,
+        "sendMessage": true,
+        "deleteMessage": true,
+        "editDetails": true,
+        "sendSpam": true,
+        "sendSwearWords": true
+    }
+}

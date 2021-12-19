@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8" />
+
+	<!-- CONSOLE [just for development, when you want to deploying this project please remove this link & script]-->
+	<link rel="stylesheet" href="../static/assets/console.css" type="text/css" media="all" />
+	<script src="../static/assets/console.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- Libraries -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="../static/assets/bootstrap5.min.css" type="text/css" media="all" />
+	<script src="../static/assets/materialize.js"></script>
+	<link rel="stylesheet" href="../static/assets/materialize.css">
+	<link rel="stylesheet" href="../static/assets/fontawesome.css">
+
+	<link rel="stylesheet" href="../static/css/index.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="../static/css/admin.css" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="../static/assets/profile.jpg" type="image/x-icon" />
+
+	<title>IKA313</title>
+</head>
+<body>
+	<!-- HEADER -->
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper white">
+				<a href="#" class="brand-logo"><span class="red-text">IKA³¹³</span></a>
+				<a href="#" data-target="openMenu" class="sidenav-trigger"><i class="black-text material-icons">menu</i></a>
+			</div>
+		</nav>
+	</div>
+
+	<ul id="openMenu" class="sidenav">
+		<li><div class="user-view">
+			<div class="background">
+				<img src="../static/assets/bg.png" width="300" height="300">
+			</div>
+			<a href="#user"><img class="circle" src="../static/{{user.avatar}}"></a>
+			<a href="#name"><span class="white-text name">{{user.name}}</span></a>
+			<a href="#email"><span class="white-text">{{user.email}}</span></a>
+		</div>
+		</li>
+		<li><a href="/" class="waves-effect"><i class="material-icons">web</i>blog</a></li>
+		<li><a href="/chat" class="waves-effect"><i class="material-icons">chat</i>IKA group chatroom</a></li>
+		<li><a href="/admin" class="waves-effect"><i class="material-icons">person</i>login to admin panel</a></li>
+	</ul>
+
+	<!-- CONTENT -->
+	<div class="container">
+		{% if user.permissions.post %}
+		<div class="card">
+			<div class="card-header">
+				post
+			</div>
+			<div class="card-body">
+				<i class="fas fa-plus"></i> <a href="/user/newpost">new post</a><br />
+				<div class="card">
+					<div class="card-header">
+						<i class="fas fa-pencil-alt"></i> posts
+					</div>
+					<div class="card-body">
+						<div style="display: flex;">
+							<input type="text" class="form-control" id="id" value="1" placeholder="id to edit" />
+							<button class="btn blue white-text waves-effect">✓</button>
+						</div>
+						<br />
+						<table border="1">
+							<tr class="first-col">
+								<td>thumbnail</td>
+								<td>title</td>
+								<td>id</td>
+								<td>keywords</td>
+								<td>released</td>
+							</tr>
+							{% for post in posts %}
+							{% if post.author == user.ID %}
+							<tr>
+								<td><img src="../static/{{ post.thumbnail }}" class="thumb-sm" alt="[T]" /></td>
+								<td>{{ post.title }}</td>
+								<td>{{ post.ID }}</td>
+								<td class="tags">
+									{% for keyword in post.keywords %}
+									<u class="tag">{{ keyword }}</u>
+									{% endfor %}
+								</td>
+								<td>
+									{% if post.released %}
+									<i class="fas fa-check"></i>
+									{% else %}
+									<i class="fas fa-ban"></i>
+									{% endif %}
+								</td>
+							</tr>
+							{% endif %}
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class="card">
+			<div class="card-header">
+				details
+			</div>
+			<div class="card-body">
+				<form action="/user/edit" method="post">
+					<input type="text" name="name" class="form-control" placeholder="name">
+					<input type="password" name="oldPassword" class="form-control" placeholder="old password">
+					<input type="password" name="newPassword" class="form-control" placeholder="new password">
+					<input type="password" name="repeatPassword" class="form-control" placeholder="repeat new password">
+					<input type="number" name="phone" class="form-control" placeholder="new phone number">
+					<input type="email" name="email" class="form-control" placeholder="new email address">
+
+					<button type="submit" class="btn btn-block waves-effect green white-text">apply changes</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<center>
+		<div id="alert" class="row alert">
+			<h3 class="col-12" id="atitle"></h3>
+			<span class="col-12" id="adescription"></span>
+			<center>
+				<div class="inline">
+					<button class="col-5 btn btn-outline-dark" id="btn1"></button>
+					<button class="col-5 btn btn-dark" id="btn2"></button>
+				</div>
+			</center>
+		</div>
+		<div id="BoxToastBox"></div>
+	</center>
+
+	<script src="../static/js/index.js"></script>
+	<script>
+		function toast(text, time) {
+			document.getElementById("BoxToastBox").innerHTML = `<div id='toastBox'>${text}</div>`;
+			var x = document.getElementById("toastBox");
+			x.className = "show";
+			setTimeout(function () {
+				x.className = x.className.replace("show", "");
+			}, time);
+		}
+	</script>
+
+	{% with messages = get_flashed_messages()  %}
+	{% if messages %}
+	{% for message in messages %}
+	<script>
+		toast("{{ message }}", 2000);
+	</script>
+	{% endfor %}
+	{% endif %}
+	{% endwith  %}
+
+
+
+</body>
+</html>

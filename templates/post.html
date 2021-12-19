@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8" />
+
+	<!-- CONSOLE [just for development, when you want to deploying this project please remove this link & script]-->
+	<link rel="stylesheet" href="../static/assets/console.css" type="text/css" media="all" />
+	<script src="../static/assets/console.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- Libraries -->
+	<link rel="stylesheet" href="../static/assets/bootstrap5.min.css" type="text/css" media="all" />
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script src="../static/assets/materialize.js"></script>
+		<link rel="stylesheet" href="../static/assets/materialize.css">-->
+
+	<link rel="stylesheet" href="../static/css/index.css" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="../static/assets/profile.jpg" type="image/x-icon" />
+	<title>IKA313</title>
+</head>
+<body>
+	<!-- HEADER -->
+	<nav class="navbar fixed-top bg-danger text-white" id="toolbar">
+		<div class="head">
+			IKA313
+		</div>
+	</nav>
+
+	<!-- CONTENT -->
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<img src="../static/{{ post.thumbnail }}" alt="[T]" class="thumbnail" />
+			</div>
+			<div class="card-body" style="text-align: {{ post.align }}; direction: {{ post.direction }};">
+				<span class="title">{{ post.title }}</span><br />
+				<span id="content"></span>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		document.getElementById("content").innerHTML = "{{post.content}}".replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+	</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+/*-------------  Toolbar Navigation  -------------*/
+.fixed-top {
+	padding: 12px;
+	background-color: #e0e0e0aa;
+	box-shadow: 0 0 8px #e0e0e0;
+}
+.gap-profile {
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+}
+.gap-details {
+	direction: rtl;
+	font-size: 12px;
+	margin-left: auto;
+	margin-right: 12px;
+}
+
+/*-------------  styles of messages  -------------*/
+.chats {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+.my-msg, .other-msg {
+    color: white;
+	max-width: 90%;
+    overflow-x: scroll;
+    width: fit-content;
+	padding: 12px 12px 3px 15px;
+}
+.my-msg {
+	margin-left: auto;
+	border-radius: 8px 8px 0 8px;
+	background: linear-gradient(120deg, #600000,#521212);
+}
+.other-msg {
+    color: white;
+	margin-right: auto;
+	border-radius: 8px 8px 8px 0;
+	background: linear-gradient(120deg, #121212, #000);
+}
+.title {
+    margin-top: 10px;
+}
+p{
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.line {
+	height: 1px;
+	margin: 4px;
+	background: #eeeeeeaa;
+}
+.details {
+	float: right;
+	font-style: italic;
+}
+/*-------------  Bottom Navigation  -------------*/
+.im {
+    padding: 35px;
+	background: #e0e0e0aa;
+	box-shadow: 0 0 8px #e0e0e0;
+}
+.form {
+	display: flex;
+	left: 0; right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: fit-content;
+	height: fit-content;
+	position: absolute;
+	margin-bottom: 45px;
+}
+.msg-field {
+	outline: none;
+	padding: 10px;
+	border: 0.5px solid #000;
+	border-top-left-radius: 50px;
+	border-bottom-left-radius: 50px;
+}
+.send-btn {
+	padding: 10px;
+	font-family: "fcl";
+	padding-left: 15px;
+	padding-right: 15px;
+	border-top-right-radius: 50px;
+	border-bottom-right-radius: 50px;
+}
+/*------------ fonts and keyframes ------------*/
+.vibrate {
+    animation-name: vibrator;
+    animation-duration: 200ms;
+}
+@keyframes vibrator {
+    10% {
+        transform: translate(-2px,-2px);
+    }
+    20% {
+        transform: translate(0px,0px);
+    }
+    30% {
+        transform: translate(2px,2px);
+    }
+    40% {
+        transform: translate(-2px,2px);
+    }
+    50% {
+        transform: translate(2px,-2px);
+    }
+    60% {
+        transform: translate(-2px,-2px);
+    }
+    70% {
+        transform: translate(0px,0px);
+    }
+    80% {
+        transform: translate(2px,2px);
+    }
+    90% {
+        transform: translate(-2px,2px);
+    }
+    100% {
+        transform: translate(2px,-2px);
+    }
+}
+@font-face {
+	font-family: "fcl";
+	src: url("../assets/FiraCode.ttf");
+}

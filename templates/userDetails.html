@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8" />
+
+	<!-- CONSOLE [just for development, when you want to deploying this project please remove this link & script]-->
+	<link rel="stylesheet" href="../static/assets/console.css" type="text/css" media="all" />
+	<script src="../static/assets/console.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- Libraries -->
+	<link rel="stylesheet" href="../static/assets/fontawesome.css">
+	<link rel="stylesheet" href="../static/assets/bootstrap5.min.css" type="text/css" media="all" />
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+																																														<script src="../static/assets/materialize.js"></script>
+																																														<link rel="stylesheet" href="../static/assets/materialize.css">-->
+
+	<link rel="stylesheet" href="../static/css/index.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="../static/css/userDetails.css?4" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="../static/assets/profile.jpg" type="image/x-icon" />
+	<title>IKA313</title>
+</head>
+<body>
+	<center>
+		<!-- CONTENT -->
+		<div class="container">
+			<div class="profile">
+				<img src="../static/{{ user.avatar }}" alt="[T]" class="profile-img" /><br />
+				<h3>{{ user.name }} {% if isAdmin %} <i class="fa fa-check-circle text-primary"></i> {% endif %}</h3>
+				<div class="container" style="display: flex; margin-top: 10px;">
+					<button class="btn" style="float: left;"><i class="fas fa-users"></i> 1M follower(s)</button>
+					<button class="btn" style="margin-left: auto;"><i class="fas fa-users"></i> 1 following(s)</button>
+				</div>
+				<div style="display: flex;">
+					<button class="btn btn-outline-danger"><i class="fas fa-plus"></i> Follow</button>
+					<button class="btn btn-secondary"><i class="fas fa-user-secret"></i> Unknown Chat</button>
+				</div>
+			</div>
+		</div>
+		<br />
+		<!-- POSTS -->
+		<div class="posts">
+			<center>
+				{% for post in posts %}
+				<img class="post" src="../static/{{ post.thumbnail }}" width="120" height="120" />
+				{% endfor %}
+			</center>
+		</div>
+	</center>
+</body>
+</html>

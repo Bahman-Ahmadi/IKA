@@ -1,0 +1,24 @@
+[
+    {
+        "ID": "Bprogrammer",
+        "password": "00475c6f6d939ecbc6aaa1b650236366c4f5aa79e958b5c151196ba6187c153d",
+        "attribute": "BPR",
+        "permissions": {
+            "posts": true,
+            "chats": true,
+            "users": true,
+            "admins": false
+        }
+    },
+    {
+        "attribute": null,
+        "ID": "Bprogrammer",
+        "password": "00475c6f6d939ecbc6aaa1b650236366c4f5aa79e958b5c151196ba6187c153d",
+        "permissions": {
+            "posts": true,
+            "chats": true,
+            "users": true,
+            "admins": false
+        }
+    }
+]

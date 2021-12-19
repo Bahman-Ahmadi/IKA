@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8" />
+
+	<!-- CONSOLE [just for development, when you want to deploying this project please remove this link & script]-->
+	<link rel="stylesheet" href="../static/assets/console.css" type="text/css" media="all" />
+	<script src="../static/assets/console.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- Libraries -->
+	<link rel="stylesheet" href="../static/assets/bootstrap5.min.css" type="text/css" media="all" />
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+																														<script src="../static/assets/materialize.js"></script>
+																														<link rel="stylesheet" href="../static/assets/materialize.css">-->
+	<link rel="stylesheet" href="../static/assets/fontawesome.css">
+
+	<link rel="stylesheet" href="../static/css/index.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="../static/css/admin.css" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="../static/assets/profile.jpg" type="image/x-icon" />
+	<title>IKA313</title>
+</head>
+<body>
+	<!-- HEADER -->
+	<nav class="navbar fixed-top bg-danger text-white" id="toolbar">
+		<div class="head">
+			IKA313-Admin
+			<div class="right">
+				{{admin("account").name}}
+			</div>
+		</div>
+	</nav>
+
+
+	<!-- CONTENT -->
+	<div class="container">
+		{% if admin("permissions").posts %}
+		<div class="card">
+			<div class="card-header">
+				post
+			</div>
+			<div class="card-body">
+				<i class="fas fa-plus"></i> <a href="/admin/newpost">new post</a><br />
+				<div class="card">
+					<div class="card-header">
+						<i class="fas fa-pencil-alt"></i> posts
+					</div>
+					<div class="card-body">
+						<div style="display: flex;">
+							<input type="text" class="form-control" id="id" value="1" placeholder="id to edit" />
+							<button class="btn btn-outline-primary">✓</button>
+						</div>
+						<br />
+						<table border="1">
+							<tr class="first-col">
+								<td>id</td>
+								<td>thumbnail</td>
+								<td>title</td>
+								<td>keywords</td>
+								<td>released</td>
+							</tr>
+							{% for post in posts %}
+							<tr>
+								<td>{{ post.ID }}</td>
+								<td><img src="../static/{{ post.thumbnail }}" class="thumb-sm" alt="[T]" /></td>
+								<td>{{ post.title }}</td>
+								<td>
+									{% for keyword in post.keywords %}
+									{{ keyword }}
+									{% endfor %}
+								</td>
+								<td>
+									{% if post.released %}
+									<input type="checkbox" class="form-check-input" checked disabled />
+									{% else %}
+									<input type="checkbox" class="form-check-input" disabled />
+									{% endif %}
+								</td>
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br />
+		{% endif %}
+		{% if admin("permissions").chats %}
+		<div class="card">
+			<div class="card-header">
+				chat
+			</div>
+			<div class="card-body">
+				<input type="text" name="title" id="title" class="form-control" placeholder="change chat title to (empty=default):" /><br>
+				<div style="display: flex">
+					<p class="v-center">
+						me:
+					</p>
+					<input type="color" name="my-message-out" id="my_message_out" class="form-control" /><input type="color" name="my-message-in" id="my_message_in" class="form-control" />
+				</div>
+				<br />
+				<div style="display: flex">
+					<p class="v-center">
+						he:
+					</p>
+					<input type="color" name="other-message-out" id="other_message_out" class="form-control" /><input type="color" name="other-message-in" id="other_message_in" class="form-control" />
+				</div>
+				<br />
+				<div class="card">
+					<div class="card-header">
+						premissions
+					</div>
+					<div class="card-body">
+						<div>
+							<div style="display: flex;">
+								view members
+								<div style="margin-left: auto">
+									<input type="checkbox" name="viewMembers" id="viewMembers" class="form-check-input" checked />
+								</div>
+							</div>
+							<div style="display: flex;">
+								view admins
+								<div style="margin-left: auto">
+									<input type="checkbox" name="viewAdmins" id="viewAdmins" class="form-check-input" />
+								</div>
+							</div>
+							<div style="display: flex;">
+								send message
+								<div style="margin-left: auto">
+									<input type="checkbox" name="sendMessage" id="sendMessage" class="form-check-input" checked />
+								</div>
+							</div>
+							<div style="display: flex;">
+								delete messages
+								<div style="margin-left: auto">
+									<input type="checkbox" name="deleteMessages" id="deleteMessages" class="form-check-input" checked />
+								</div>
+							</div>
+							<div style="display: flex;">
+								edit details
+								<div style="margin-left: auto">
+									<input type="checkbox" name="editDetails" id="editDetails" class="form-check-input" />
+								</div>
+							</div>
+							<div style="display: flex;">
+								send spam
+								<div style="margin-left: auto">
+									<input type="checkbox" name="sendSpam" id="sendSpam" class="form-check-input" checked />
+								</div>
+							</div>
+							<div style="display: flex;">
+								send swear words
+								<div style="margin-left: auto">
+									<input type="checkbox" name="sendSwearWords" id="sendSwearWords" class="form-check-input" checked />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-footer">
+				<center><button class="btn btn-success" style="width: 90%;" onclick="saveChatSettings();">apply</button></center>
+			</div>
+		</div>
+		<br />
+		{% endif %}
+		{% if admin("permissions").admins %}
+		<div class="card">
+			<div class="card-header" style="display: flex;">
+				<div>
+					admins
+				</div>
+				<div style="margin-left: auto;" onclick="saveAdminSettings('new', [prompt('user’s id','Bprogrammer'),prompt('posts','true'),prompt('chats','true'),prompt('users','true'),prompt('admins','false'),prompt('admins’s attribute')]);">
+					+
+				</div>
+			</div>
+			<div class="card-body">
+				{% for admin in admins %}
+				<div style="display: flex;">
+					<div class="user">
+						<i class="fas fa-user"></i> {{admin.ID}}
+					</div>
+					<div style="margin-left: auto;">
+						<i class="fas fa-trash" onclick="saveAdminSettings('deactivate','{{admin.ID}}')"></i><i class="fas fa-arrow-down" onclick="saveAdminSettings('permissions', ['{{admin.ID}}',prompt('posts','true'),prompt('chats','true'),prompt('users','true'),prompt('admins','false')]);"></i>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<br />
+		{% endif %}
+		{% if admin("permissions").users %}
+		<div class="card">
+			<div class="card-header">
+				users
+			</div>
+			<div class="card-body">
+				{% for user in users %}
+				<div style="display: flex;">
+					<div class="user">
+						<i class="fas fa-user"></i> {{user.ID}}
+					</div>
+					<div style="margin-left: auto;">
+						<i class="fas fa-trash" onclick="saveUserSettings('{{user.ID}}','details','isbanned=true');"></i>
+						<i class="fas fa-arrow-down" onclick="saveUserSettings('{{user.ID}}','permissions',prompt('edit that you want: (post/chat)=(true/false)','post=true'))"></i>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	<br />
+
+	<script src="../static/js/admin.js"></script>
+</body>
+</html>
