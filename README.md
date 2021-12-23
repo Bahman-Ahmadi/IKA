@@ -1,10 +1,10 @@
-<h1>IKA Website Flask App</h1>
-<h3>installation</h3>
+<h1>IKA Website Flask App</h1><br/>
+<h3>installation</h3><br/>
 <pre lang="bash">
 apt install python git && pip install -r requirements.txt && git clone https://github.com/Bahman-Ahmadi/IKA.git
 </pre>
 <hr />
-<h3>run</h3>
+<h3>run</h3><br/>
 <pre lang="bash">
 cd IKA && python app.py
 </pre>
@@ -17,5 +17,5 @@ cd IKA && python app.py
 • chat room<br/>
 <hr/>
 </h3>developers</h3><br/>
-- Front-end : <a href="https://github.com/mvaysi">M.vaysi</a>
+- Front-end : <a href="https://github.com/mvaysi">M.vaysi</a><br/>
 - Back-end : <a href="https://github.com/bahman-ahmadi">Bahman Ahmadi</a>
